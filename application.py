@@ -104,7 +104,7 @@ class MainWindow(QtWidgets.QWidget):
 
         self.ui.list.itemClicked.connect(self.list_clicked)
         self.filename = ["close_fist_horizontally", "close_fist_perpendicularly", "hand_to_left", "hand_to_right",
-                         "hand_rotation_palm_up","hand_rotation_palm_up", "arm_to_left", "arm_to_right",
+                         "hand_rotation_palm_up","hand_rotation_palm_down", "arm_to_left", "arm_to_right",
                          "hand_closer", "hand_away", "hand_up", "hand_down", "stop_gesture"]
         self.onetime_event = 0
 
