@@ -1,5 +1,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.Qt import Qt
 from pyqtgraph import PlotWidget
 import pyqtgraph as pg
 from pyqtgraph.Qt import QtGui
@@ -82,7 +83,7 @@ class MainWindow(QtWidgets.QWidget):
         self.ui.setupUi(self)
         self.timer = QtCore.QTimer() #timer which counts time to update data, set for one 100ms
         self.timer.timeout.connect(self.updatePlot)
-        self.timer.start(50)
+        self.timer.start(35)
         self.ui.graphicsView.setBackground('w')
         self.ui.graphicsView.setXRange(-0.3, 0.3)
         self.ui.graphicsView.setYRange(0, 1)
@@ -105,6 +106,7 @@ class MainWindow(QtWidgets.QWidget):
         self.filename = ["close_fist_horizontally", "close_fist_perpendicularly", "hand_to_left", "hand_to_right",
                          "hand_rotation_palm_up","hand_rotation_palm_up", "arm_to_left", "arm_to_right",
                          "hand_closer", "hand_away", "hand_up", "hand_down", "stop_gesture"]
+        self.onetime_event = 0
 
     def updatePlot(self): #update plot and values from radar
         if self.click_button2 == 0: #Plot data from AWR in real time when button has state 0
@@ -134,10 +136,9 @@ class MainWindow(QtWidgets.QWidget):
             self.click_button1 = 1 #Change state to 1 - clicked
             read_awr.if_button_is_pushed = 1 #Pass state of button to read_awr program
 
-            onetime_event = 0
-            if onetime_event == 0: #Pass the number of spinBox to GestureNumber just once at the start of program
+            if self.onetime_event == 0: #Pass the number of spinBox to GestureNumber just once at the start of program
                 read_awr.GestureNumber = self.ui.spinBox.value()
-                onetime_event = 1
+                self.onetime_event = 1
 
             dirpath = self.filename[self.ui.list.currentRow()]
             path = "data/" + dirpath + "/gesture_" + str(read_awr.GestureNumber) + ".csv"
@@ -190,12 +191,14 @@ class MainWindow(QtWidgets.QWidget):
                 y_pos = data[x][6]
                 number_of_objects = int(data[x][1])
                 try:
-                    for y in range(number_of_objects - 1):  # check number of objects in frame
+                    y = 0
+                    while data[y + x + 1][0] == FrameNumber: #while the same frame
                         distance = np.append(distance, data[y + x + 1][2])
                         velocity = np.append(velocity, data[y + x + 1][3])
                         peak_value = np.append(x_pos, data[y + x + 1][4])
                         x_pos = np.append(x_pos, data[y + x + 1][5])
                         y_pos = np.append(y_pos, data[y + x + 1][6])
+                        y += 1
                     detobj = {"frame": FrameNumber, "objectNumber": number_of_objects, "range": distance,
                               "velocity": velocity, "peakval": peak_value, "x": x_pos, "y": y_pos}
                     FrameData[FrameNumber - 1] = detobj
@@ -227,4 +230,3 @@ if __name__ == "__main__":
     c = MainWindow()
     c.show()
     sys.exit(app.exec_())
-git
