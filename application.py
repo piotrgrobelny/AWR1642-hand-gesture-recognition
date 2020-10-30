@@ -174,7 +174,7 @@ class MainWindow(QtWidgets.QWidget):
 
         print("Start reading data from csv file")
 
-        path = "data/" + dirpath + "/gesture_" + str(gesture_number) + ".csv"
+        path = "data/" + dirpath + "/gesture_" + str(gesture_number+100) + ".csv"
         self.label_text("Open: "+path)
         data = np.loadtxt(path, delimiter=",", skiprows=2) #open file
 
