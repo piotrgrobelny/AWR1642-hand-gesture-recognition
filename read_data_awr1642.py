@@ -277,7 +277,7 @@ def Read_DataAWR(Dataport, configParameters):
             if if_button_is_pushed == 0 and slope == 1:
                 print("Save gesture to database")
                 slope = 0
-                dirpath = 'data/' + filename + '/gesture_' + str(GestureNumber+100) + '.csv'
+                dirpath = 'data/' + filename + '/gesture_' + str(GestureNumber+200) + '.csv'
                 print(dirpath)
                 np.savetxt(dirpath, GestureData, delimiter=',', fmt=['%d', '%d', '%f', '%f', '%f', '%f', '%f'],
                            header='FrameNumber, ObjectNumber,Range,Velocity,PeakValue,x,y', comments='')
