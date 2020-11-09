@@ -1,6 +1,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.Qt import Qt
+#from PyQt5.Qt import Qt
 from pyqtgraph import PlotWidget
 import pyqtgraph as pg
 from pyqtgraph.Qt import QtGui
