@@ -1,6 +1,6 @@
 
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.Qt import Qt
+from PyQt5 import QtCore, QtWidgets
+#from PyQt5.Qt import Qt
 from pyqtgraph import PlotWidget
 import pyqtgraph as pg
 from pyqtgraph.Qt import QtGui
@@ -33,6 +33,7 @@ class Ui_Dialog(object):
         font1 =  QtGui.QFont()
         font1.setPointSize(20)
         self.spinBox.setFont(font1)
+        self.spinBox.setMaximum(1000)
 
         #label
         self.label = QtWidgets.QLabel(Dialog)
@@ -44,12 +45,12 @@ class Ui_Dialog(object):
 
         #buttons for saving data
         self.button1 = QtWidgets.QPushButton(Dialog)
-        self.button1.setText("Start recording")
+        self.button1.setText("Recording")
         self.button1.setGeometry(QtCore.QRect(60, 600, 130, 51))
 
         #button to play records from database
         self.button2 = QtWidgets.QPushButton(Dialog)
-        self.button2.setText("Play the record")
+        self.button2.setText("Preview")
         self.button2.setGeometry(QtCore.QRect(60, 700, 130, 51))
 
         #list to choose what gesture you want to write into .csv file
@@ -104,7 +105,7 @@ class MainWindow(QtWidgets.QWidget):
 
         self.ui.list.itemClicked.connect(self.list_clicked)
         self.filename = ["close_fist_horizontally", "close_fist_perpendicularly", "hand_to_left", "hand_to_right",
-                         "hand_rotation_palm_up","hand_rotation_palm_up", "arm_to_left", "arm_to_right",
+                         "hand_rotation_palm_up","hand_rotation_palm_down", "arm_to_left", "arm_to_right",
                          "hand_closer", "hand_away", "hand_up", "hand_down", "stop_gesture"]
         self.onetime_event = 0
 

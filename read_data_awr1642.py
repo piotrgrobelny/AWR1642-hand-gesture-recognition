@@ -260,7 +260,7 @@ def Read_DataAWR(Dataport, configParameters):
                     next_frame = 0
                     for i in range(len(detObj['x'])):
                         if detObj['x'][i] <= 0.3 and detObj['x'][i] >= -0.4: #threshold for x position
-                            if detObj['y'][i] > 0 and detObj['y'][i] <= 0.6: #and detObj['y'][i] > 0.05: #threshold for y position
+                            if detObj['y'][i] > 0 and detObj['y'][i] <= 0.6: #and detObj['y'][i] > 0.06: #threshold for y position
                                 counter += 1
                                 FrameData = np.array([(FrameIndex, counter, detObj['range'][i],
                                                        detObj['doppler'][i], detObj['peakVal'][i],
