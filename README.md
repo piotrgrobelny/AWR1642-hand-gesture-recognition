@@ -1,9 +1,9 @@
 # AWR1642-hand-gesture-recognition
 Hand gesture recognition for AWR1642 BOOST evaluation board using LSTM classificaiton algorithm. The repository consist of two separate programs: application with GUI for saving the gesture into `CSV` file
-inside `Data` directory and LSTM classification algorithm. The following code and database was used and described in this [MDPI article](https://www.mdpi.com/2079-9292/11/5/787).
+inside `Data` directory and LSTM classification algorithm. The following code and database was used and described in this [MDPI article](https://www.mdpi.com/2079-9292/11/5/787). 
 
 ## Saving the gesture to database
-Connect the AWR1642 BOOST board to PC. Install neccesery libraries in order to run the python files.
+Start configuration of AWR1642 boost is saved in `1642config.cfg` file. Connect the AWR1642 BOOST board to PC. Install neccesery libraries in order to run the python files.
 Install the [mm-Wave Demo Visualizer](https://dev.ti.com/gallery/view/mmwave/mmWave_Demo_Visualizer/ver/4.2.0/) from Texas Instrument.
 Run the `application.py` file:
 
