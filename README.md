@@ -1,5 +1,5 @@
 # AWR1642-hand-gesture-recognition
-Hand gesture recognition for AWR1642 BOOST evaluation board using LSTM classificaiton algorithm. The repository consist of two separate programs: application with GUI for saving the gesture into `CSV` file
+Hand gesture recognition for AWR1642 BOOST evaluation board using LSTM classification algorithm. The repository consist of two separate programs: application with GUI for saving the gesture into `CSV` file
 inside `Data` directory and LSTM classification algorithm. The following code and database was used and described in this [MDPI article](https://www.mdpi.com/2079-9292/11/5/787). 
 
 ## Saving the gesture to database
